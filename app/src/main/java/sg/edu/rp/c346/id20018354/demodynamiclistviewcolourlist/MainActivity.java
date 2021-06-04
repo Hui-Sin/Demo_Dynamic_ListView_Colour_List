@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 int position = Integer.parseInt(etIndexElement.getText().toString());
                 alColours.remove(position);
                 lvColour.setAdapter(aaColour);
-                etElement.setText("");
+                aaColour.notifyDataSetChanged();
             }
         });
         btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 int position = Integer.parseInt(etIndexElement.getText().toString());
                 alColours.set(position, inputColour);
                 lvColour.setAdapter(aaColour);
-                etElement.setText("");
+                aaColour.notifyDataSetChanged();
             }
         });
         lvColour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
