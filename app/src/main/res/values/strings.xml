@@ -3,4 +3,6 @@
     <string name="btnAddColour">Add New Colour</string>
     <string name="enter_new_colour">Enter new colour</string>
     <string name="enter_new_position_number">Enter new position number</string>
+    <string name="btnRemoveColour">Remove A colour</string>
+    <string name="btnUpdateColour">Update a colour</string>
 </resources>

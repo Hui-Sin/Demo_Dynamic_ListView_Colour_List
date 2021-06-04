@@ -4,17 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText etElement,etIndexElement;
-    Button btnAdd;
+    Button btnAdd,btnRemove,btnUpdate;
     ListView lvColour;
     ArrayList<String>alColours;
 
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         btnAdd=findViewById(R.id.buttonAddItem);
         lvColour=findViewById(R.id.listViewColour);
         etIndexElement=findViewById(R.id.editTextIndex);
+        btnRemove=findViewById(R.id.buttonRemove);
+        btnUpdate=findViewById(R.id.buttonUpdate);
 
         alColours =new ArrayList<String>();
         alColours.add("Red");
@@ -38,9 +42,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newColor=etElement.getText().toString();
-                int pos=Integer.parseInt(etIndexElement.getText().toString());
-                alColours.add(pos,newColor);
+                int position=Integer.parseInt(etIndexElement.getText().toString());
+                alColours.add(position,newColor);
                 aaColour.notifyDataSetChanged();
+            }
+        });
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = Integer.parseInt(etIndexElement.getText().toString());
+                alColours.remove(position);
+                lvColour.setAdapter(aaColour);
+                etElement.setText("");
+            }
+        });
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String inputColour = etElement.getText().toString();
+                int position = Integer.parseInt(etIndexElement.getText().toString());
+                alColours.set(position, inputColour);
+                lvColour.setAdapter(aaColour);
+                etElement.setText("");
+            }
+        });
+        lvColour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String pickedColour = lvColour.getItemAtPosition(position).toString();
+                Toast.makeText(MainActivity.this, pickedColour, Toast.LENGTH_SHORT).show();
             }
         });
     }
