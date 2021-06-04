@@ -75,5 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 etElement.setText(alColours.get(position));
                 etIndexElement.setText(String.valueOf(position));
             }
-        });    }
+        });
+    }
 }
