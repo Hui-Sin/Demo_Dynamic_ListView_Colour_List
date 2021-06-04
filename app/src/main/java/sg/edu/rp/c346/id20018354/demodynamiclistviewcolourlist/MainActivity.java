@@ -69,8 +69,11 @@ public class MainActivity extends AppCompatActivity {
         lvColour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, lvColour.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+                String colour = alColours.get(position);
+                String message = String.format("You have selected %s", colour);
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                etElement.setText(alColours.get(position));
+                etIndexElement.setText(String.valueOf(position));
             }
-        });
-    }
+        });    }
 }
