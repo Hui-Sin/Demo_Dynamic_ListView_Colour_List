@@ -69,8 +69,7 @@ public class MainActivity extends AppCompatActivity {
         lvColour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String pickedColour = lvColour.getItemAtPosition(position).toString();
-                Toast.makeText(MainActivity.this, pickedColour, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, lvColour.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
